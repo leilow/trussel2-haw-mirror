@@ -1,0 +1,584 @@
+:root {
+  --bg: #f3efe7;
+  --paper: #fbf9f4;
+  --ink: #222;
+  --muted: #6a645b;
+  --accent: #b36a2e;
+  --line: #d8d0c4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Literata", "Iowan Old Style", "Palatino", serif;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(243,239,231,0.85), rgba(243,239,231,0.85)),
+    url("/day-time-background.png") center / cover fixed !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Modern link states */
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2a6f8f;
+  outline-offset: 2px;
+}
+
+/* Preserve artifact layout but improve readability */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+.mirrorPage {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+/* Consistent content width inside mirrored pages */
+.mirrorPage table {
+  width: 100%;
+}
+
+.mirrorPage table[width] {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure common content blocks align */
+.mirrorPage > table,
+.mirrorPage > div > table {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Sticky top nav inside mirrored pages */
+/* Hide legacy in-page nav; use global header instead */
+.xdic {
+  display: none;
+}
+
+.globalHeader {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+  background: rgba(243, 239, 231, 0.92);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 96px;
+  font-family: "Fraunces", "Georgia", serif;
+}
+
+.globalHeader__toggle {
+  display: none;
+  align-self: center;
+  justify-self: end;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.globalHeader__toggleInput {
+  display: none;
+}
+
+.globalHeader__middle,
+.globalHeader__right {
+  min-height: 100px;
+}
+
+.ghTitle {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.ghList {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.ghList a {
+  color: #1b3f73;
+}
+
+.ghNav {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px 16px;
+  justify-items: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ghNav a {
+  color: #0b6a6d;
+  text-decoration: none;
+}
+
+.ghNav a:hover {
+  text-decoration: underline;
+}
+
+.ghSearch {
+  display: grid;
+  gap: 6px;
+}
+
+.ghLabel {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.ghRow {
+  display: grid;
+  grid-template-columns: 220px 100px;
+  gap: 6px;
+}
+
+.globalHeader__searchRow {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 24px;
+  justify-content: center;
+  align-items: end;
+}
+
+.ghSearch--inline {
+  width: 100%;
+}
+
+.ghRow input {
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.ghRow button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+
+.scrollButtons {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 6px;
+  z-index: 30;
+}
+
+.scrollButtons button {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.9);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+  .globalHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .globalHeader__middle {
+    order: 1;
+  }
+
+  .ghNav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .globalHeader__searchRow {
+    grid-template-columns: 1fr;
+  }
+
+  .ghRow {
+    grid-template-columns: 1fr auto;
+  }
+
+  .globalHeader__toggle {
+    display: inline-flex;
+  }
+
+  .globalHeader__middle,
+  .globalHeader__searchRow {
+    display: none;
+  }
+
+  .globalHeader__toggleInput:checked ~ .globalHeader__middle,
+  .globalHeader__toggleInput:checked ~ .globalHeader__searchRow {
+    display: grid;
+  }
+
+  .ghNav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .mirrorPage {
+    padding: 16px 12px 50px;
+  }
+
+  .mirrorPage table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Intro page: subtle hierarchy + color */
+.introPage h1,
+.introPage h2,
+.introPage h3 {
+  color: #8a2d1f;
+  letter-spacing: 0.02em;
+}
+
+.introPage h1 {
+  font-size: 2.2em;
+}
+
+.introPage h2 {
+  font-size: 1.4em;
+}
+
+.introPage p {
+  line-height: 1.6;
+}
+
+.introPage p.Kepanos {
+  color: firebrick;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.introPage p.CHD {
+  color: firebrick;
+  font-weight: 700;
+  font-size: 2.4em;
+  line-height: 1.1;
+  margin: 6px 0 10px;
+}
+
+.introPage p.dictionary {
+  color: firebrick;
+  font-weight: 700;
+  font-size: 1.25em;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+/* Improve tap targets for small controls */
+input[type="button"],
+input[type="submit"],
+button {
+  min-height: 32px;
+  padding: 6px 10px;
+}
+
+/* Responsive tables and images in mirrored content */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inline photos in mirrored content */
+.mirrorPage img {
+  max-width: 360px;
+  max-height: 360px;
+  width: auto;
+  height: auto;
+  border: 2px solid #444;
+  border-radius: 4px;
+}
+
+@media (max-width: 700px) {
+  .mirrorPage img {
+    max-width: 100%;
+  }
+}
+
+table {
+  max-width: 100%;
+}
+
+/* Mobile tweaks */
+@media (max-width: 900px) {
+  .container {
+    padding: 20px 14px 50px;
+  }
+
+  .xdic {
+    font-size: 14px;
+  }
+
+  .xdic a {
+    margin: 2px 2px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+.mirrorPage {
+  max-width: none;
+  padding: 20px 16px 60px;
+}
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+
+.title {
+  font-family: "Fraunces", "Georgia", serif;
+  font-size: 32px;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 28px 0 40px;
+}
+
+.navSection {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 14px 14px 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.navSection h3 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.navItem {
+  display: block;
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+  font-size: 16px;
+}
+
+.navItem:first-of-type {
+  border-top: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.heroCard {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.heroCard h2 {
+  margin: 0 0 12px;
+  font-family: "Fraunces", "Georgia", serif;
+}
+
+.heroCard p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.heroMeta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footer {
+  margin-top: 60px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+/* Dictionary page */
+.dict {
+  margin-top: 28px;
+}
+
+.dictHeader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.dictHeader h1 {
+  margin: 0;
+  font-family: "Fraunces", "Georgia", serif;
+  font-size: 28px;
+}
+
+.dictMeta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.dictSearch {
+  min-width: 260px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.dictGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.dictEntry {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+}
+
+.dictEntry p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dictEntry .HwNew {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.dictEntry .pos {
+  color: var(--muted);
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.dictEntry .def {
+  display: inline;
+  font-size: 15px;
+}
+
+.dictEntry a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.dictEntry a:hover {
+  text-decoration: underline;
+}
+
+.resultLink {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.dictWord {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.dictHeadword {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.dictPos {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dictDef {
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
