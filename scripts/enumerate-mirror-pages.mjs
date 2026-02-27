@@ -50,6 +50,11 @@ function walk(dir) {
         const rel = relative(mirrorPath, full);
         // Skip junk files from the scrape
         if (rel.startsWith(".") || rel.includes("/.")) continue;
+        // Skip files over 10MB — rendered output exceeds Cloudflare Pages 25MB limit
+        if (stat.size > 10 * 1024 * 1024) {
+          console.log(`  Skipping ${rel} (${(stat.size / 1024 / 1024).toFixed(1)} MB)`);
+          continue;
+        }
         results.push(rel);
       }
     }
