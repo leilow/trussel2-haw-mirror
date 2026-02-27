@@ -21,6 +21,22 @@ const mirrorPath =
   process.env.MIRROR_LOCAL_PATH ||
   "/Users/leimomi/site-mirror/raw/trussel2/trussel2.com/HAW";
 
+// In CI, the local mirror won't exist. If a manifest already exists
+// in the repo, skip regeneration.
+try {
+  statSync(mirrorPath);
+} catch {
+  const existing = join(projectRoot, "data", "mirror-manifest.json");
+  try {
+    const entries = JSON.parse(readFileSync(existing, "utf-8"));
+    console.log(`Mirror path not found. Using existing manifest (${entries.length} entries).`);
+    process.exit(0);
+  } catch {
+    console.error(`Mirror path not found and no existing manifest at ${existing}`);
+    process.exit(1);
+  }
+}
+
 function walk(dir) {
   const results = [];
   for (const entry of readdirSync(dir)) {

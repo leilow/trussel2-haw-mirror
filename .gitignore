@@ -6,4 +6,3 @@ out/
 !.env.example
 public/HAW/
 public/www.trussel2.com/
-data/mirror-manifest.json
