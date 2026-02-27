@@ -10,7 +10,7 @@
  * If MIRROR_LOCAL_PATH is not set, falls back to the default location.
  */
 
-import { readdirSync, statSync, writeFileSync, mkdirSync } from "node:fs";
+import { readdirSync, readFileSync, statSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
