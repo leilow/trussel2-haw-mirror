@@ -40,17 +40,11 @@ export default function GlobalHeader() {
           <Link href="/m/HAW/refs.htm">References</Link>
           <Link href="/m/HAW/texts.htm">Texts</Link>
           <Link href="/m/HAW/counts.htm">Counts</Link>
+          <form method="get" action="https://www.trussel2.com/HAW/search.php" target="_blank" rel="noreferrer" className="ghSearchInline">
+            <input name="zoom_query" type="text" placeholder="Search trussel2.com" className="ghSearchInline__input" />
+            <button type="submit" className="ghSearchInline__btn">Go</button>
+          </form>
         </nav>
-      </div>
-
-      <div className="globalHeader__searchRow">
-        <form method="get" action="https://www.trussel2.com/HAW/search.php" target="_blank" rel="noreferrer" className="ghSearch ghSearch--inline">
-          <label htmlFor="zoom_query" className="ghLabel">Search (trussel2.com)</label>
-          <div className="ghRow">
-            <input id="zoom_query" name="zoom_query" type="text" placeholder="Search" />
-            <button type="submit">Search</button>
-          </div>
-        </form>
       </div>
     </header>
   );
