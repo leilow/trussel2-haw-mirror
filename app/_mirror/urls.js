@@ -7,6 +7,9 @@ export const MIRROR_BASE_URL = (
 ).replace(/\/$/, "");
 
 export function mirrorUrl(relPath) {
-  const cleaned = relPath.startsWith("/") ? relPath.slice(1) : relPath;
+  let cleaned = relPath.startsWith("/") ? relPath.slice(1) : relPath;
+  if (cleaned.toLowerCase().startsWith("haw/")) {
+    cleaned = cleaned.slice(4);
+  }
   return `${MIRROR_BASE_URL}/${cleaned}`;
 }
