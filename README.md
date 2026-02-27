@@ -7,7 +7,7 @@ Static-friendly mirror viewer for the Trussel Hawaiian Dictionary site.
 Set the mirror base URL (where the raw HTML mirror is hosted):
 
 ```bash
-MIRROR_BASE_URL=https://your-mirror.example.com
+MIRROR_BASE_URL=https://heaniani.com
 ```
 
 Copy `.env.example` to `.env.local` for local development.
@@ -18,6 +18,17 @@ Copy `.env.example` to `.env.local` for local development.
 npm install
 npm run dev
 ```
+
+## Cloudflare R2 + Custom Domain
+
+To connect the mirror:
+
+1. Upload the contents of `/Users/leimomi/site-mirror/raw/trussel2/trussel2.com/HAW` to the R2 bucket `trussel2-haw-mirror` (bucket root).
+2. In Cloudflare R2, enable **Public Access** for the bucket.
+3. Add the custom domain `heaniani.com` to the bucket.
+4. Set `MIRROR_BASE_URL=https://heaniani.com` in:
+   - `.env.local` (for local dev)
+   - Cloudflare Pages environment variables (for deploy)
 
 ## Notes
 
