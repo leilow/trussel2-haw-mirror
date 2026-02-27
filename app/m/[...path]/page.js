@@ -1,9 +1,27 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { notFound } from "next/navigation";
 import { fetchMirrorHtml } from "../../_mirror/loader";
 import { renderMirrorFragment } from "../../_mirror/MirrorShell";
 
+function loadManifest() {
+  try {
+    const raw = readFileSync(join(process.cwd(), "data", "mirror-manifest.json"), "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
+}
+
+export function generateStaticParams() {
+  const manifest = loadManifest();
+  return manifest.map((relPath) => ({
+    path: ["HAW", ...relPath.split("/")],
+  }));
+}
+
 export default async function MirrorHtmlPage({ params }) {
-  const segments = params.path || [];
+  const { path: segments = [] } = await params;
   const isIntro = segments.join("/").toLowerCase() === "haw/intro.htm" || segments.join("/").toLowerCase() === "intro.htm";
   const needsHawPrefix =
     segments.length === 1 &&

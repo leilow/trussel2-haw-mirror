@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { mirrorUrl } from "./urls";
 
 function countReplacementChars(text) {
@@ -8,14 +10,7 @@ function countReplacementChars(text) {
   return count;
 }
 
-export async function fetchMirrorHtml(relPath) {
-  const url = mirrorUrl(relPath);
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error(`Failed to fetch ${url}`);
-  }
-  const buf = new Uint8Array(await res.arrayBuffer());
-
+function decodeBuffer(buf) {
   if (buf.length >= 2) {
     const b0 = buf[0];
     const b1 = buf[1];
@@ -37,4 +32,25 @@ export async function fetchMirrorHtml(relPath) {
     text = new TextDecoder("iso-8859-1").decode(buf);
   }
   return text;
+}
+
+export async function fetchMirrorHtml(relPath) {
+  const localPath = process.env.MIRROR_LOCAL_PATH;
+  if (localPath) {
+    let cleaned = relPath.startsWith("/") ? relPath.slice(1) : relPath;
+    if (cleaned.toLowerCase().startsWith("haw/")) {
+      cleaned = cleaned.slice(4);
+    }
+    const fullPath = join(localPath, cleaned);
+    const buf = new Uint8Array(readFileSync(fullPath));
+    return decodeBuffer(buf);
+  }
+
+  const url = mirrorUrl(relPath);
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch ${url}`);
+  }
+  const buf = new Uint8Array(await res.arrayBuffer());
+  return decodeBuffer(buf);
 }
