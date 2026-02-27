@@ -40,13 +40,9 @@ export default function HomePage() {
           </p>
           <p>
             Kepano passed away in June 2020.{" "}
-            <a
-              href="https://www.staradvertiser.com/2020/07/04/editorial/kauakukalahale/column-he-aloha-no-kuaeu-hoa-aeaki-mau-i-ka-palu-aeo-kepano/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="/kepano">
               Obituary (Star-Advertiser)
-            </a>
+            </a>.
           </p>
         </div>
 

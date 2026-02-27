@@ -83,7 +83,7 @@ body {
 
 .globalHeader {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: 16px;
   align-items: center;
   background: rgba(243, 239, 231, 0.92);
@@ -94,6 +94,42 @@ body {
   z-index: 20;
   min-height: 96px;
   font-family: "Fraunces", "Georgia", serif;
+}
+
+.globalHeader__search {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ghSearchInput {
+  width: 120px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.7);
+  transition: width 0.2s;
+}
+
+.ghSearchInput:focus {
+  width: 180px;
+  background: #fff;
+}
+
+.ghSearchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.ghSearchBtn:hover {
+  color: var(--ink);
 }
 
 .globalHeader__logo {
@@ -166,29 +202,6 @@ body {
 
 .ghNav a:hover {
   text-decoration: underline;
-}
-
-.ghSearchInline {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-
-.ghSearchInline__input {
-  width: 140px;
-  padding: 4px 8px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  font-size: 13px;
-}
-
-.ghSearchInline__btn {
-  border: 1px solid var(--line);
-  background: #fff;
-  border-radius: 4px;
-  padding: 4px 10px;
-  font-size: 13px;
-  cursor: pointer;
 }
 
 .ghSearch {
@@ -268,34 +281,32 @@ body {
 
 @media (max-width: 700px) {
   .globalHeader {
-    grid-template-columns: auto 1fr auto;
-  }
-
-  .globalHeader__searchRow {
-    grid-template-columns: 1fr;
-    grid-column: 1 / -1;
-  }
-
-  .ghRow {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
   }
 
   .globalHeader__toggle {
     display: inline-flex;
   }
 
-  .globalHeader__middle,
-  .globalHeader__searchRow {
+  .globalHeader__middle {
     display: none;
+    grid-column: 1 / -1;
   }
 
-  .globalHeader__toggleInput:checked ~ .globalHeader__middle,
-  .globalHeader__toggleInput:checked ~ .globalHeader__searchRow {
+  .globalHeader__toggleInput:checked ~ .globalHeader__middle {
     display: grid;
   }
 
   .ghNav {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ghSearchInput {
+    width: 90px;
+  }
+
+  .ghSearchInput:focus {
+    width: 140px;
   }
 }
 
@@ -551,6 +562,42 @@ a {
 .searchExtLink {
   color: var(--accent);
   font-weight: 600;
+}
+
+/* Kepano page */
+.kepanoArticle {
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+.kepanoArticle a {
+  color: var(--accent);
+}
+
+.kepanoDivider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 24px 0;
+}
+
+.kepanoSource {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.kepanoQuote {
+  border-left: 3px solid var(--line);
+  margin: 16px 0;
+  padding: 12px 20px;
+  background: var(--paper);
+}
+
+.kepanoQuote a {
+  color: var(--accent);
+}
+
+.kepanoQuoteTitle {
+  margin: 0 0 8px;
 }
 
 /* Greyed-out coming-soon links */

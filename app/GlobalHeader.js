@@ -23,9 +23,6 @@ export default function GlobalHeader() {
       <Link href="/" className="globalHeader__logo" aria-label="Home">
         <LogoMark />
       </Link>
-      <label className="globalHeader__toggle" htmlFor="global-nav-toggle">
-        Menu
-      </label>
       <div className="globalHeader__middle">
         <nav id="global-nav" className="ghNav">
           <Link href="/m/HAW/intro.htm">Introduction</Link>
@@ -40,12 +37,20 @@ export default function GlobalHeader() {
           <Link href="/m/HAW/refs.htm">References</Link>
           <Link href="/m/HAW/texts.htm">Texts</Link>
           <Link href="/m/HAW/counts.htm">Counts</Link>
-          <form method="get" action="https://www.trussel2.com/HAW/search.php" target="_blank" rel="noreferrer" className="ghSearchInline">
-            <input name="zoom_query" type="text" placeholder="Search trussel2.com" className="ghSearchInline__input" />
-            <button type="submit" className="ghSearchInline__btn">Go</button>
-          </form>
         </nav>
       </div>
+      <form method="get" action="https://www.trussel2.com/HAW/search.php" target="_blank" rel="noreferrer" className="globalHeader__search">
+        <input name="zoom_query" type="text" placeholder="Search" className="ghSearchInput" />
+        <button type="submit" className="ghSearchBtn" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+      </form>
+      <label className="globalHeader__toggle" htmlFor="global-nav-toggle">
+        Menu
+      </label>
     </header>
   );
 }
