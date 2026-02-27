@@ -2,52 +2,71 @@ import Link from "next/link";
 import { siteMap } from "../data/siteMap";
 import { navGroups } from "../data/nav";
 
-function LinkDiagnostics({ siteMap }) {
-  const allLinks = siteMap.flatMap((section) =>
-    section.items.map((item) => item.path)
-  );
-
-  return (
-    <div className="heroCard">
-      <h2>Link Map Diagnostics</h2>
-      <p>
-        This panel checks the routes you intend to support. For now, it lists
-        them so we can verify the information architecture before building pages.
-      </p>
-      <div className="heroMeta">{allLinks.length} routes in map</div>
-      <ul>
-        {allLinks.map((path) => (
-          <li key={path}>{path}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export default function HomePage() {
   return (
     <main className="container">
-      <header className="header">
-        <div>
-          <div className="title">Trussel Hawaiian Prototype</div>
-          <div className="subtitle">
-            Modern rebuild test UI. Focus: structure, links, and layout.
-          </div>
-        </div>
-        <div className="subtitle">Single-page pilot</div>
+      <header className="homeHeader">
+        <h1 className="homeTitle">Heaniani</h1>
+        <p className="homeSubtitle">
+          A mirror of the Combined Hawaiian Dictionary
+        </p>
       </header>
 
-      <section className="nav">
-        {siteMap.map((section) => (
-          <div className="navSection" key={section.section}>
-            <h3>{section.section}</h3>
-            {section.items.map((item) => (
-              <Link className="navItem" href={item.path} key={item.path}>
-                {item.title}
-              </Link>
-            ))}
-          </div>
-        ))}
+      <section className="homeIntro">
+        <div className="heroCard">
+          <h2>Purpose</h2>
+          <p>
+            This mirrored site exists as a way to preserve Kepano&rsquo;s work,
+            keep the interlinking consistent, and hopefully contribute to it in
+            a new form.
+          </p>
+        </div>
+
+        <div className="heroCard">
+          <h2>About Kepano</h2>
+          <p>
+            Stephen &ldquo;Kepano&rdquo; Trussel was a computer programmer from
+            New York who moved to Hawai&rsquo;i to study Hawaiian language at UH
+            M&#257;noa. He compiled the{" "}
+            <a href="https://www.trussel2.com/HAW/intro.htm" target="_blank" rel="noreferrer">
+              Combined Hawaiian Dictionary
+            </a>{" "}
+            (CHD), merging the works of Pukui &amp; Elbert, M&#257;maka Kaiao,
+            Andrews, and Place Names of Hawai&rsquo;i into one searchable
+            resource. He also produced the weekly Hawaiian-language newspaper
+            column <em>Kauak&#363;kalahale</em> index and maintained research on
+            Austronesian and Pacific languages at{" "}
+            <a href="https://www.trussel.com/" target="_blank" rel="noreferrer">
+              trussel.com
+            </a>.
+          </p>
+          <p>
+            Described as &ldquo;an unheralded champion for the Hawaiian
+            language,&rdquo; Kepano passed away in June 2020. His dictionary
+            remains freely available at{" "}
+            <a href="https://www.trussel2.com/" target="_blank" rel="noreferrer">
+              trussel2.com
+            </a>.
+          </p>
+        </div>
+
+        <div className="heroCard">
+          <h2>Search</h2>
+          <p>
+            Full-text search is not available on this static mirror.
+            You can search the original site directly:
+          </p>
+          <p>
+            <a
+              href="https://www.trussel2.com/HAW/search.php"
+              target="_blank"
+              rel="noreferrer"
+              className="searchExtLink"
+            >
+              Search on trussel2.com &rarr;
+            </a>
+          </p>
+        </div>
       </section>
 
       <section className="nav">
@@ -69,25 +88,30 @@ export default function HomePage() {
         ))}
       </section>
 
-      <section className="hero">
-        <div className="heroCard">
-          <h2>Purpose</h2>
-          <p>
-            We are creating a modern, readable interface with a data-driven
-            navigation system so interlinking stays consistent as content grows.
-          </p>
-          <p>
-            Next step: add routes for each entry in the map, then wire in content
-            page by page.
-          </p>
-          <div className="heroMeta">Prototype status: navigation only</div>
-        </div>
-
-        <LinkDiagnostics siteMap={siteMap} />
+      <section className="nav">
+        {siteMap.map((section) => (
+          <div className="navSection" key={section.section}>
+            <h3>{section.section}</h3>
+            {section.items.map((item) =>
+              item.soon ? (
+                <span className="navItem navItem--soon" key={item.path}>
+                  {item.title}
+                </span>
+              ) : (
+                <Link className="navItem" href={item.path} key={item.path}>
+                  {item.title}
+                </Link>
+              )
+            )}
+          </div>
+        ))}
       </section>
 
       <footer className="footer">
-        This is a test UI. Content and links will be refined as we ingest data.
+        Based on the work of Stephen &ldquo;Kepano&rdquo; Trussel at{" "}
+        <a href="https://www.trussel2.com/HAW/" target="_blank" rel="noreferrer">
+          trussel2.com
+        </a>
       </footer>
     </main>
   );
