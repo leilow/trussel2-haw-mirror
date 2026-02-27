@@ -25,18 +25,11 @@ export default function GlobalHeader() {
       </div>
 
       <div className="globalHeader__searchRow">
-        <form method="get" action="/search" className="ghSearch ghSearch--inline">
-          <label htmlFor="zoom_query" className="ghLabel">Global Search</label>
+        <form method="get" action="https://www.trussel2.com/HAW/search.php" target="_blank" rel="noreferrer" className="ghSearch ghSearch--inline">
+          <label htmlFor="zoom_query" className="ghLabel">Search (trussel2.com)</label>
           <div className="ghRow">
             <input id="zoom_query" name="zoom_query" type="text" placeholder="Search" />
             <button type="submit">Search</button>
-          </div>
-        </form>
-        <form method="get" action="/search" className="ghSearch ghSearch--inline">
-          <label htmlFor="headword" className="ghLabel">Headword (no okina/kahako)</label>
-          <div className="ghRow">
-            <input id="headword" name="headword" type="text" placeholder="Headword" />
-            <button type="submit">Go</button>
           </div>
         </form>
       </div>

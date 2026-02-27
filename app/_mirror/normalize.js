@@ -73,7 +73,7 @@ export function fixHeadwordForm(html) {
   let updated = html;
   updated = updated.replace(
     /<FORM\s+NAME="myform"[^>]*>/gi,
-    '<form method="get" action="/search">'
+    '<form method="get" action="https://www.trussel2.com/HAW/search.php" target="_blank" rel="noreferrer">'
   );
   updated = updated.replace(/NAME="inputbox"/gi, 'NAME="headword"');
   updated = updated.replace(
