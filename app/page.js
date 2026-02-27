@@ -25,28 +25,28 @@ export default function HomePage() {
         <div className="heroCard">
           <h2>About Kepano</h2>
           <p>
-            Stephen &ldquo;Kepano&rdquo; Trussel was a computer programmer from
-            New York who moved to Hawai&rsquo;i to study Hawaiian language at UH
-            M&#257;noa. He compiled the{" "}
+            Stephen &ldquo;Kepano&rdquo; Trussel compiled the{" "}
             <a href="https://www.trussel2.com/HAW/intro.htm" target="_blank" rel="noreferrer">
               Combined Hawaiian Dictionary
             </a>{" "}
             (CHD), merging the works of Pukui &amp; Elbert, M&#257;maka Kaiao,
             Andrews, and Place Names of Hawai&rsquo;i into one searchable
-            resource. He also produced the weekly Hawaiian-language newspaper
-            column <em>Kauak&#363;kalahale</em> index and maintained research on
+            resource. He was known in the Linguistics Department at UH
+            M&#257;noa for this work, and also maintained research on
             Austronesian and Pacific languages at{" "}
-            <a href="https://www.trussel.com/" target="_blank" rel="noreferrer">
-              trussel.com
-            </a>.
-          </p>
-          <p>
-            Described as &ldquo;an unheralded champion for the Hawaiian
-            language,&rdquo; Kepano passed away in June 2020. His dictionary
-            remains freely available at{" "}
             <a href="https://www.trussel2.com/" target="_blank" rel="noreferrer">
               trussel2.com
             </a>.
+          </p>
+          <p>
+            Kepano passed away in June 2020.{" "}
+            <a
+              href="https://www.staradvertiser.com/2020/07/04/editorial/kauakukalahale/column-he-aloha-no-kuaeu-hoa-aeaki-mau-i-ka-palu-aeo-kepano/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Obituary (Star-Advertiser)
+            </a>
           </p>
         </div>
 
