@@ -3,23 +3,17 @@ export const siteMap = [
     section: "Hawaiian",
     items: [
       { title: "Introduction", path: "/intro" },
-      { title: "Sound System", path: "/sounds" },
-      { title: "Orthography", path: "/orthography" },
-      { title: "Grammar", path: "/grammar" },
-      { title: "Glossary", path: "/glossary" }
-    ]
-  },
-  {
-    section: "Dictionary",
-    items: [
-      { title: "Hawaiian-English: A", path: "/haw-a" }
+      { title: "Sound System", path: "/sounds", soon: true },
+      { title: "Orthography", path: "/orthography", soon: true },
+      { title: "Grammar", path: "/grammar", soon: true },
+      { title: "Glossary", path: "/glossary", soon: true }
     ]
   },
   {
     section: "Resources",
     items: [
-      { title: "Bibliography", path: "/bibliography" },
-      { title: "About", path: "/about" }
+      { title: "Bibliography", path: "/bibliography", soon: true },
+      { title: "About", path: "/about", soon: true }
     ]
   }
 ];

@@ -1,9 +1,28 @@
 import Link from "next/link";
 
+function LogoMark() {
+  return (
+    <svg className="logoMark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+      <circle cx="16" cy="8" r="2.5" fill="#b33a3a" />
+      <circle cx="10" cy="12" r="2.5" fill="#b33a3a" />
+      <circle cx="22" cy="12" r="2.5" fill="#b33a3a" />
+      <circle cx="8" cy="18" r="2.5" fill="#b33a3a" />
+      <circle cx="16" cy="16" r="2.5" fill="#b33a3a" />
+      <circle cx="24" cy="18" r="2.5" fill="#b33a3a" />
+      <circle cx="12" cy="23" r="2.5" fill="#b33a3a" />
+      <circle cx="20" cy="23" r="2.5" fill="#b33a3a" />
+      <circle cx="16" cy="28" r="2.5" fill="#b33a3a" />
+    </svg>
+  );
+}
+
 export default function GlobalHeader() {
   return (
     <header className="globalHeader">
       <input id="global-nav-toggle" className="globalHeader__toggleInput" type="checkbox" />
+      <Link href="/" className="globalHeader__logo" aria-label="Home">
+        <LogoMark />
+      </Link>
       <label className="globalHeader__toggle" htmlFor="global-nav-toggle">
         Menu
       </label>
