@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <main className="container">
       <header className="homeHeader">
-        <h1 className="homeTitle">Heaniani</h1>
+        <h1 className="homeTitle">He Aniani</h1>
         <p className="homeSubtitle">
           A mirror of the Combined Hawaiian Dictionary
         </p>
