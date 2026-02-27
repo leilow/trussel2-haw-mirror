@@ -3,8 +3,8 @@ import GlobalHeader from "./GlobalHeader";
 import ScrollButtons from "./ScrollButtons";
 
 export const metadata = {
-  title: "Trussel2 Hawaiian Mirror",
-  description: "Static-friendly mirror viewer for the Trussel Hawaiian Dictionary site"
+  title: "He Aniani — Combined Hawaiian Dictionary Mirror",
+  description: "A mirror preserving Kepano Trussel's Combined Hawaiian Dictionary"
 };
 
 export default function RootLayout({ children }) {
