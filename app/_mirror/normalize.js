@@ -61,8 +61,12 @@ function stripLegacyBlocks(html) {
   return updated;
 }
 
+function stripTrusselHomeLink(html) {
+  return html.replace(/<a\s[^>]*href="[^"]*www\.trussel\.com"[^>]*>[\s\S]*?<\/a>/gi, "");
+}
+
 export function augmentNav(html) {
-  return stripLegacyBlocks(fixHeadwordForm(html));
+  return stripTrusselHomeLink(stripLegacyBlocks(fixHeadwordForm(html)));
 }
 
 export function fixHeadwordForm(html) {
