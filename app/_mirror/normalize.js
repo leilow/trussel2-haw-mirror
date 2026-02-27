@@ -65,8 +65,14 @@ function stripTrusselHomeLink(html) {
   return html.replace(/<a\s[^>]*href="[^"]*www\.trussel\.com"[^>]*>[\s\S]*?<\/a>/gi, "");
 }
 
+function addMissingUpdatedDate(html) {
+  if (/class="updated"/i.test(html)) return html;
+  const today = new Date().toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "numeric" });
+  return `<div class="updated">updated: ${today}</div>\n` + html;
+}
+
 export function augmentNav(html) {
-  return stripTrusselHomeLink(stripLegacyBlocks(fixHeadwordForm(html)));
+  return addMissingUpdatedDate(stripTrusselHomeLink(stripLegacyBlocks(fixHeadwordForm(html))));
 }
 
 export function fixHeadwordForm(html) {

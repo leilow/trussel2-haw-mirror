@@ -162,9 +162,10 @@ body {
   display: none;
 }
 
-.globalHeader__middle,
-.globalHeader__right {
-  min-height: 100px;
+.globalHeader__middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ghTitle {
