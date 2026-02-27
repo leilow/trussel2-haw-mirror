@@ -168,6 +168,29 @@ body {
   text-decoration: underline;
 }
 
+.ghSearchInline {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.ghSearchInline__input {
+  width: 140px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.ghSearchInline__btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 .ghSearch {
   display: grid;
   gap: 6px;
