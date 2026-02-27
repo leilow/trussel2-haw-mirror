@@ -10,6 +10,12 @@ export const siteMap = [
     ]
   },
   {
+    section: "Related",
+    items: [
+      { title: "ʻŌlelo Noʻeau Search", path: "https://www.olelonoeau.com/", external: true }
+    ]
+  },
+  {
     section: "Resources",
     items: [
       { title: "Bibliography", path: "/bibliography", soon: true },

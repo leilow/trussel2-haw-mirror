@@ -93,6 +93,10 @@ export default function HomePage() {
                 <span className="navItem navItem--soon" key={item.path}>
                   {item.title}
                 </span>
+              ) : item.external ? (
+                <a className="navItem" href={item.path} key={item.path} target="_blank" rel="noreferrer">
+                  {item.title}
+                </a>
               ) : (
                 <Link className="navItem" href={item.path} key={item.path}>
                   {item.title}
@@ -104,10 +108,16 @@ export default function HomePage() {
       </section>
 
       <footer className="footer">
-        Based on the work of Stephen &ldquo;Kepano&rdquo; Trussel at{" "}
-        <a href="https://www.trussel2.com/HAW/" target="_blank" rel="noreferrer">
-          trussel2.com
-        </a>
+        <p>
+          Based on the work of Stephen &ldquo;Kepano&rdquo; Trussel at{" "}
+          <a href="https://www.trussel2.com/HAW/" target="_blank" rel="noreferrer">
+            trussel2.com
+          </a>
+        </p>
+        <p>
+          Contact:{" "}
+          <a href="mailto:olelonoeausearch@gmail.com">olelonoeausearch@gmail.com</a>
+        </p>
       </footer>
     </main>
   );
