@@ -31,7 +31,7 @@ export function normalizeHref(href) {
   if (!rel || rel === "#") return trimmed;
 
   if (rel.startsWith("../images/")) {
-    return `/mirror/HAW/images/${rel.slice("../images/".length)}${hash}`;
+    return `https://www.heaniani.com/images/${rel.slice("../images/".length)}${hash}`;
   }
 
   const lower = rel.toLowerCase();
@@ -39,7 +39,7 @@ export function normalizeHref(href) {
     return `/m/HAW/${rel}${hash}`;
   }
 
-  return `/mirror/HAW/${rel}${hash}`;
+  return `https://www.heaniani.com/${rel}${hash}`;
 }
 
 export function rewriteLinks(html) {
@@ -69,7 +69,7 @@ export function fixHeadwordForm(html) {
   let updated = html;
   updated = updated.replace(
     /<FORM\s+NAME="myform"[^>]*>/gi,
-    '<form method="get" action="/mirror/HAW/search.php">'
+    '<form method="get" action="/search">'
   );
   updated = updated.replace(/NAME="inputbox"/gi, 'NAME="headword"');
   updated = updated.replace(

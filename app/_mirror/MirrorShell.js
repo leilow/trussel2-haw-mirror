@@ -12,8 +12,8 @@ export function renderMirrorFragment(html) {
 
   return (
     <>
-      <link rel="stylesheet" href="/mirror/HAW/haw.css" />
-      <link rel="icon" href="/mirror/HAW/favicon.ico" />
+      <link rel="stylesheet" href="https://www.heaniani.com/haw.css" />
+      <link rel="icon" href="https://www.heaniani.com/favicon.ico" />
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </>
   );
